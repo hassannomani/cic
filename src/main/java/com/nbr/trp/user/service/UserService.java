@@ -13,12 +13,15 @@ public interface UserService {
 
     public List<User> getAllUsers();
 
+    public List<User> getAllPendingUsers();
+
     public Optional<User> getUserByUsername(String username);
 
     public List<Role> getRoles();
 
     public User getUser(String uname);
+    public Boolean assignAndApprove(String email,String designation) throws Exception;
 
-//    public User rejectRepUserByTin(String tin);
+    public Boolean reject(String uname) throws Exception;
 
 }

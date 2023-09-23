@@ -34,6 +34,8 @@ public class User {
     @Column(name = "last_name")
     public String lastName;
 
+    @Column(name = "mobile")
+    public String mobile;
 
     @Column(name = "added_by")
     public String addedBy;
@@ -59,12 +61,13 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
-    public User(String uuid, String username, String password, String firstName, String lastName, String addedBy, Date addedDate, String addedFromIP, String designation, String status, Set<Role> roles) {
+    public User(String uuid, String username, String password, String firstName, String lastName, String mobile, String addedBy, Date addedDate, String addedFromIP, String designation, String status, Set<Role> roles) {
         this.uuid = uuid;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.mobile = mobile;
         this.addedBy = addedBy;
         this.addedDate = addedDate;
         this.addedFromIP = addedFromIP;

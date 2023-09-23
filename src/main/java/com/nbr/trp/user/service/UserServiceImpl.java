@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
         //String password = user.getPassword();
         this.passwordEncoder = new BCryptPasswordEncoder();
         String pass = this.passwordEncoder.encode(user.getPassword());
+        user.setStatus("0");
         //System.out.println("The pass is "+pass);
         user.setPassword(pass);
         User u = userRepository.save(user);
@@ -43,6 +44,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUsers(){
         return userRepository.findAllByOrderByAddedDateDesc();
+    }
+
+    @Override
+    public List<User> getAllPendingUsers() {
+        return userRepository.findByStatus("0");
     }
 
     @Override
@@ -60,5 +66,36 @@ public class UserServiceImpl implements UserService {
         return userRepository.getByUname(uname);
     }
 
+    public Boolean assignAndApprove(String email,String designation) throws Exception{
+        try{
+            User u = userRepository.getByUname(email);
+            if(u==null){
+                System.out.println("No user found");
+                return false;
+            }
+            System.out.println(u);
+            u.setDesignation(designation);
+            u.setStatus("1");
+            userRepository.save(u);
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+
+    public Boolean reject(String username) throws Exception{
+        try{
+            User u = userRepository.getByUname(username);
+            if(u==null){
+                throw new Exception("User not found");
+            }
+            u.setStatus("-1");
+            userRepository.save(u);
+            return true;
+        }catch(Exception e){
+            throw new Exception(e);
+        }
+    }
 
 }

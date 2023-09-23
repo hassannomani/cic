@@ -78,8 +78,41 @@ public class UserController {
         }
     }
 
+    @CrossOrigin(origins = "*", maxAge = 4800)
+    @GetMapping("/pending-all")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> getAllPendingUsers() {
+        try{
+            List<User> all_users_pending = userService.getAllPendingUsers();
+            return ResponseEntity.ok(all_users_pending);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/assign/{email}/{designation}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> assignAndApprove(@PathVariable String email, @PathVariable String designation) {
+        try{
+            Boolean user = userService.assignAndApprove(email,designation);
+            return ResponseEntity.ok(user);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
 
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/reject/{username}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> reject(@PathVariable String username) {
+        try{
+            Boolean user = userService.reject(username);
+            return ResponseEntity.ok(user);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
 
 }
