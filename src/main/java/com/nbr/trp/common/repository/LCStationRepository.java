@@ -1,6 +1,6 @@
 package com.nbr.trp.common.repository;
 
-import com.nbr.trp.common.entity.CustomsHouse;
+import com.nbr.trp.common.entity.LCStation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,15 +12,17 @@ import java.util.List;
 
 @Repository
 @EnableJpaRepositories
-public interface CustomsHouseRepository extends JpaRepository<CustomsHouse, String> {
+public interface LCStationRepository extends JpaRepository<LCStation, String > {
 
-    CustomsHouse save(CustomsHouse ch);
+    LCStation save(LCStation lc);
 
-    List<CustomsHouse> findAll();
+    List<LCStation> findAll();
 
     @Transactional
     @Modifying
-    @Query(value = "delete from customshouse where id=?1",
+    @Query(value = "delete from lcstation where id=?1",
             nativeQuery = true)
-    void deletehouses(Integer id);
+    void deletelcstations(Integer id);
+
 }
+

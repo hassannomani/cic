@@ -13,6 +13,6 @@ public interface CustomsHouseService {
 
     public List<CustomsHouse> getAllHouse();
 
-    public Boolean deleteHouse(String id);
+    public void deleteHouse(String id);
 
 }

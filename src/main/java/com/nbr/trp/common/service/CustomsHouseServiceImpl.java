@@ -23,7 +23,8 @@ public class CustomsHouseServiceImpl implements CustomsHouseService {
     }
 
     @Override
-    public Boolean deleteHouse(String id) {
-        return null;
+    public void deleteHouse(String id) {
+        Integer i = Integer.valueOf(id);
+        customsHouseRepository.deletehouses(i);
     }
 }
