@@ -50,4 +50,7 @@ public class TaxFileTrk {
     @Column(name = "details")
     public String details;
 
+    @Column(name="status")
+    public String status;
+
 }
