@@ -1,10 +1,31 @@
 package com.nbr.trp.inventory.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.nbr.trp.common.entity.LCStation;
+import com.nbr.trp.inventory.entity.Inventory;
+import com.nbr.trp.inventory.service.InventoryService;
+import com.nbr.trp.user.response.MessageResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/inventory")
 public class InventoryController {
+
+    @Autowired
+    InventoryService inventoryService;
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/add")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> addInventory(@RequestBody Inventory inventory) {
+        try{
+            Inventory in = inventoryService.saveInventory(inventory);
+            return ResponseEntity.ok(in);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
 
 }

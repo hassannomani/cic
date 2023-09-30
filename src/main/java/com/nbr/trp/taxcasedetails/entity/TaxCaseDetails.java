@@ -18,6 +18,8 @@ public class TaxCaseDetails {
     @Column(columnDefinition = "uniqueidentifier default newid()")
     private String taxcasedtlsuuid;
 
+    @Column(name = "createdby")
+    public String createdby;
 
     @Column(name = "taxpayername", nullable = false)
     public String taxpayername;
@@ -64,4 +66,6 @@ public class TaxCaseDetails {
     @Column(name = "comment")
     public String comment;
 
+    @Column(name = "status")
+    public String status;
 }

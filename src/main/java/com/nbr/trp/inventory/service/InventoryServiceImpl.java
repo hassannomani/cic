@@ -15,12 +15,12 @@ public class InventoryServiceImpl implements InventoryService{
 
     @Override
     public Inventory saveInventory(Inventory in) {
-        return null;
+        return inventoryRepository.save(in);
     }
 
     @Override
     public List<Inventory> getAllInventory() {
-        return null;
+        return inventoryRepository.findAll();
     }
 
     @Override
