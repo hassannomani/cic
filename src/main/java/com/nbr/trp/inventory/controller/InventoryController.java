@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/inventory")
 public class InventoryController {
@@ -27,5 +29,28 @@ public class InventoryController {
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/list")
+    public ResponseEntity<?> listInventory() {
+        try{
+            List<Inventory> in = inventoryService.getAllInventory();
+            return ResponseEntity.ok(in);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/remove/{id}")
+    public ResponseEntity<?> listInventory(@PathVariable String id) {
+        try{
+            Boolean in = inventoryService.deleteInventory(id);
+            return ResponseEntity.ok(in);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
+
 
 }

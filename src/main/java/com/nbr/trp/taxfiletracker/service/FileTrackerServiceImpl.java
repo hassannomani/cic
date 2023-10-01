@@ -25,8 +25,23 @@ public class FileTrackerServiceImpl implements FileTrackerService{
     }
 
     @Override
-    public TaxFileTrk updateFileTrk(TaxFileTrk taxFileTrk) {
-        return null;
+    public Boolean updateFileTrk(TaxFileTrk taxFileTrk) {
+        String id = taxFileTrk.getTaxfileuuid();
+        TaxFileTrk taxFileTrk1 = fileTrackerRepository.findByTaxfileuuid(id);
+
+        taxFileTrk1.setTaxpayername(taxFileTrk.getTaxpayername());
+        taxFileTrk1.setBin(taxFileTrk.getBin());
+        taxFileTrk1.setFileno(taxFileTrk.getFileno());
+        taxFileTrk1.setCustomshouse(taxFileTrk.getCustomshouse());
+        taxFileTrk1.setDetails(taxFileTrk.getDetails());
+        taxFileTrk1.setNid(taxFileTrk.getNid());
+        taxFileTrk1.setJurisdiction(taxFileTrk.getJurisdiction());
+        taxFileTrk1.setLcstation(taxFileTrk.getLcstation());
+        taxFileTrk1.setRackno(taxFileTrk.getRackno());
+        taxFileTrk1.setStoragedate(taxFileTrk.getStoragedate());
+        taxFileTrk1.setTin(taxFileTrk.getTin());
+        fileTrackerRepository.save(taxFileTrk1);
+        return true;
     }
 
     @Override

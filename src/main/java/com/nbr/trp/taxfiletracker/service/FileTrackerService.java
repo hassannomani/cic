@@ -13,9 +13,11 @@ public interface FileTrackerService {
 
    public TaxFileTrk getFileTrk(String uuid);
 
-   public TaxFileTrk updateFileTrk(TaxFileTrk taxFileTrk);
+   public Boolean updateFileTrk(TaxFileTrk taxFileTrk);
 
    public Boolean deleteFileTrk(String id);
 
    public List<TaxFileTrkView> getAll();
+
+
 }

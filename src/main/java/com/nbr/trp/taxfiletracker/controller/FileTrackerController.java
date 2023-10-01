@@ -62,4 +62,15 @@ public class FileTrackerController {
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/update")
+    public ResponseEntity<?> updateFileTrack(@RequestBody TaxFileTrk taxFileTrk) {
+        try{
+            Boolean taxFileTrk1 = fileTrackerService.updateFileTrk(taxFileTrk);
+            return ResponseEntity.ok(taxFileTrk1);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
 }

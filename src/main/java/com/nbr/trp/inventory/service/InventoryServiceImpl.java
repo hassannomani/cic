@@ -27,4 +27,11 @@ public class InventoryServiceImpl implements InventoryService{
     public Inventory getInventory(String id) {
         return null;
     }
+
+    @Override
+    public Boolean deleteInventory(String id){
+        inventoryRepository.deleteByInventoriid(id);
+        return true;
+    }
+
 }
