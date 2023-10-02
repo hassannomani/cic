@@ -25,13 +25,23 @@ public class InventoryServiceImpl implements InventoryService{
 
     @Override
     public Inventory getInventory(String id) {
-        return null;
+        return inventoryRepository.findByInventoriid(id);
     }
 
     @Override
     public Boolean deleteInventory(String id){
         inventoryRepository.deleteByInventoriid(id);
         return true;
+    }
+
+    @Override
+    public Inventory updateInventory(Inventory in) {
+        String invent = in.getInventoriid();
+        Inventory inventory = inventoryRepository.findByInventoriid(invent);
+        inventory.setName(inventory.getName());
+        inventory.setQuantity(inventory.getQuantity());
+        inventory.setPicture(inventory.getPicture());
+        return inventoryRepository.save(inventory);
     }
 
 }

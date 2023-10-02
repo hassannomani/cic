@@ -52,5 +52,27 @@ public class InventoryController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/get/{id}")
+    public ResponseEntity<?> getInventory(@PathVariable String id) {
+        try{
+            Inventory in = inventoryService.getInventory(id);
+            return ResponseEntity.ok(in);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/update")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> updateInventory(@RequestBody Inventory inventory) {
+        try{
+            Inventory in = inventoryService.saveInventory(inventory);
+            return ResponseEntity.ok(in);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
 
 }

@@ -14,4 +14,7 @@ public interface InventoryService {
 
     public Inventory getInventory(String id);
     public Boolean deleteInventory(String id);
+
+    public Inventory updateInventory(Inventory in);
+
 }

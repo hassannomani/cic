@@ -2,6 +2,7 @@ package com.nbr.trp.taxcasedetails.controller;
 
 import com.nbr.trp.taxcasedetails.entity.TaxCaseDetails;
 import com.nbr.trp.taxcasedetails.entity.TaxCaseDetailsView;
+import com.nbr.trp.taxcasedetails.repository.CaseDetailsRepository;
 import com.nbr.trp.taxcasedetails.service.CaseDetailsService;
 import com.nbr.trp.taxfiletracker.entity.TaxFileTrk;
 import com.nbr.trp.taxfiletracker.entity.TaxFileTrkView;
@@ -19,6 +20,8 @@ public class CaseDetailsController {
 
     @Autowired
     CaseDetailsService caseDetailsService;
+    @Autowired
+    private CaseDetailsRepository caseDetailsRepository;
 
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -60,6 +63,17 @@ public class CaseDetailsController {
         try{
             Boolean bool = caseDetailsService.deleteCaseDetails(id);
             return ResponseEntity.ok(bool);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/update")
+    public ResponseEntity<?> updateCaseDetails(@RequestBody TaxCaseDetails caseDetails) {
+        try{
+            TaxCaseDetails caseDetails1 = caseDetailsService.updateCaseDetails(caseDetails);
+            return ResponseEntity.ok(caseDetails1);
         }catch(Exception e){
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
