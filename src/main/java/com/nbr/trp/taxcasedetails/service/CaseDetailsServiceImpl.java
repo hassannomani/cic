@@ -39,9 +39,9 @@ public class CaseDetailsServiceImpl implements CaseDetailsService{
         caseDetails1.setFileenlisted(caseDetails.getFileenlisted());
         caseDetails1.setFileinitdate(caseDetails.getFileinitdate());
         caseDetails1.setNidno(caseDetails.getNidno());
-        caseDetails1.setRjsc(caseDetails1.getRjsc());
-        caseDetails1.setTaxpayername(caseDetails1.getTaxpayername());
-        caseDetails1.setTinno(caseDetails1.getTinno());
+        caseDetails1.setRjsc(caseDetails.getRjsc());
+        caseDetails1.setTaxpayername(caseDetails.getTaxpayername());
+        caseDetails1.setTinno(caseDetails.getTinno());
         return caseDetailsRepository.save(caseDetails1);
     }
 
