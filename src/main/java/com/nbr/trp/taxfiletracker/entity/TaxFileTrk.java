@@ -20,6 +20,9 @@ public class TaxFileTrk {
     @Column(name = "taxpayername", nullable = false)
     public String taxpayername;
 
+    @Column(name = "classification")
+    public String classification;
+
     @Column(name = "fileno",nullable = false)
     public String fileno;
 

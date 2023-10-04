@@ -39,6 +39,7 @@ public class FileTrackerServiceImpl implements FileTrackerService{
         taxFileTrk1.setLcstation(taxFileTrk.getLcstation());
         taxFileTrk1.setRackno(taxFileTrk.getRackno());
         taxFileTrk1.setStoragedate(taxFileTrk.getStoragedate());
+        taxFileTrk1.setClassification(taxFileTrk.getClassification());
         taxFileTrk1.setTin(taxFileTrk.getTin());
         fileTrackerRepository.save(taxFileTrk1);
         return true;
