@@ -66,6 +66,19 @@ public class TaxCaseDetails {
     @Column(name = "comment")
     public String comment;
 
+    @Column(name = "bankunfreezedate")
+    public Date bankunfreezedate;
+
+    @Column(name = "filetype")
+    public String filetype;
+
+    @Column(name = "cicamount")
+    public String cicamount;
+
+    @Column(name = "fieldamount")
+    public String fieldamount;
+
     @Column(name = "status")
     public String status;
+
 }
