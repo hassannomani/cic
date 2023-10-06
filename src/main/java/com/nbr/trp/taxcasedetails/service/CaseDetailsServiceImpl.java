@@ -42,6 +42,10 @@ public class CaseDetailsServiceImpl implements CaseDetailsService{
         caseDetails1.setRjsc(caseDetails.getRjsc());
         caseDetails1.setTaxpayername(caseDetails.getTaxpayername());
         caseDetails1.setTinno(caseDetails.getTinno());
+        caseDetails1.setBankunfreezedate(caseDetails.getBankunfreezedate());
+        caseDetails1.setCicamount(caseDetails.getCicamount());
+        caseDetails1.setFieldamount(caseDetails.getFieldamount());
+        caseDetails1.setFiletype(caseDetails.getFiletype());
         return caseDetailsRepository.save(caseDetails1);
     }
 
