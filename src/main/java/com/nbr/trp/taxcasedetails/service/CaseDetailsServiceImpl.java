@@ -3,6 +3,7 @@ package com.nbr.trp.taxcasedetails.service;
 import com.nbr.trp.taxcasedetails.entity.TaxCaseDetails;
 import com.nbr.trp.taxcasedetails.entity.TaxCaseDetailsView;
 import com.nbr.trp.taxcasedetails.repository.CaseDetailsRepository;
+import com.nbr.trp.taxfiletracker.entity.TaxFileTrkView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +59,20 @@ public class CaseDetailsServiceImpl implements CaseDetailsService{
     @Override
     public List<TaxCaseDetailsView> getAll() {
         return caseDetailsRepository.findAllFile();
+    }
+
+    @Override
+    public List<TaxCaseDetailsView> findName(String name) {
+        return caseDetailsRepository.findByTaxpayernameContaining(name);
+    }
+
+    @Override
+    public List<TaxCaseDetailsView> findTin(String tin) {
+        return caseDetailsRepository.findByTinnoContaining(tin);
+    }
+
+    @Override
+    public List<TaxCaseDetailsView> findBin(String bin) {
+        return caseDetailsRepository.findByBin(bin);
     }
 }

@@ -27,4 +27,10 @@ public interface CaseDetailsRepository extends JpaRepository<TaxCaseDetails, Str
     @Transactional
     @Modifying
     void deleteByTaxcasedtlsuuid(String uuid);
+
+    List<TaxCaseDetailsView> findByTaxpayernameContaining(String name);
+
+    List<TaxCaseDetailsView> findByTinnoContaining(String tin);
+
+    List<TaxCaseDetailsView> findByBin(String bin);
 }

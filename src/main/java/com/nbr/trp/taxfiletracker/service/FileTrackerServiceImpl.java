@@ -70,4 +70,14 @@ public class FileTrackerServiceImpl implements FileTrackerService{
     public List<TaxFileTrkView> findBin(String bin) {
         return fileTrackerRepository.findByBin(bin);
     }
+
+    @Override
+    public List<TaxFileTrkView> findHouse(String house) {
+        return fileTrackerRepository.findByCustomshouse(house);
+    }
+
+    @Override
+    public List<TaxFileTrkView> findLCS(String lc) {
+        return fileTrackerRepository.findByLcstation(lc);
+    }
 }

@@ -25,6 +25,9 @@ public interface FileTrackerService {
 
    public List<TaxFileTrkView> findBin(String bin);
 
+   public List<TaxFileTrkView> findHouse(String house);
+   public List<TaxFileTrkView> findLCS(String lc);
+
 
 
 }

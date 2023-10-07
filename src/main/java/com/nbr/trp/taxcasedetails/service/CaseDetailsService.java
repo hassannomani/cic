@@ -20,4 +20,10 @@ public interface CaseDetailsService {
     public Boolean deleteCaseDetails(String id);
 
     public List<TaxCaseDetailsView> getAll();
+
+    public List<TaxCaseDetailsView> findName(String name);
+
+    public List<TaxCaseDetailsView> findTin(String tin);
+
+    public List<TaxCaseDetailsView> findBin(String bin);
 }

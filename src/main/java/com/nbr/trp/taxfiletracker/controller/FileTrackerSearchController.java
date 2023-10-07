@@ -49,4 +49,27 @@ public class FileTrackerSearchController {
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
     }
+
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/house/{house}")
+    public ResponseEntity<?> getByHouse(@PathVariable String house) {
+        try{
+            List<TaxFileTrkView> taxFileTrk1 = fileTrackerService.findHouse(house);
+            return ResponseEntity.ok(taxFileTrk1);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/lc/{lc}")
+    public ResponseEntity<?> getByLCStation(@PathVariable String lc) {
+        try{
+            List<TaxFileTrkView> taxFileTrk1 = fileTrackerService.findLCS(lc);
+            return ResponseEntity.ok(taxFileTrk1);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
 }

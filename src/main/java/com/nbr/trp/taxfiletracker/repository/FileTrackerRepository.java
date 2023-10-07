@@ -34,6 +34,9 @@ public interface FileTrackerRepository extends JpaRepository<TaxFileTrk, String>
 
     List<TaxFileTrkView> findByBin(String bin);
 
+    List<TaxFileTrkView> findByCustomshouse(String house);
+    List<TaxFileTrkView> findByLcstation(String lc);
+
 
 
 }
