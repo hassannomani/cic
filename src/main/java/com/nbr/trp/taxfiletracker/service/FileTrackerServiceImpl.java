@@ -55,4 +55,19 @@ public class FileTrackerServiceImpl implements FileTrackerService{
     public List<TaxFileTrkView> getAll(){
         return fileTrackerRepository.findAllFile();
     }
+
+    @Override
+    public List<TaxFileTrkView> findName(String name) {
+        return fileTrackerRepository.findByTaxpayernameContaining(name);
+    }
+
+    @Override
+    public List<TaxFileTrkView> findTin(String tin) {
+        return fileTrackerRepository.findByTin(tin);
+    }
+
+    @Override
+    public List<TaxFileTrkView> findBin(String bin) {
+        return fileTrackerRepository.findByBin(bin);
+    }
 }

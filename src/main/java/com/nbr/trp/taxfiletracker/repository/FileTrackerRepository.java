@@ -27,5 +27,13 @@ public interface FileTrackerRepository extends JpaRepository<TaxFileTrk, String>
     @Modifying
     void deleteByTaxfileuuid(String uuid);
 
+//    @Query(value = "select taxfileuuid, taxpayername from taxfiletrackers where taxpayername ",nativeQuery = true)
+    List<TaxFileTrkView> findByTaxpayernameContaining(String name);
+
+    List<TaxFileTrkView> findByTin(String tin);
+
+    List<TaxFileTrkView> findByBin(String bin);
+
+
 
 }

@@ -19,5 +19,12 @@ public interface FileTrackerService {
 
    public List<TaxFileTrkView> getAll();
 
+   public List<TaxFileTrkView> findName(String name);
+
+   public List<TaxFileTrkView> findTin(String tin);
+
+   public List<TaxFileTrkView> findBin(String bin);
+
+
 
 }
