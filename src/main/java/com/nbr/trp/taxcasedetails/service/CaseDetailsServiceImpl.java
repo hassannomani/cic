@@ -47,6 +47,10 @@ public class CaseDetailsServiceImpl implements CaseDetailsService{
         caseDetails1.setCicamount(caseDetails.getCicamount());
         caseDetails1.setFieldamount(caseDetails.getFieldamount());
         caseDetails1.setFiletype(caseDetails.getFiletype());
+        caseDetails1.setFileno(caseDetails.getFileno());
+        caseDetails1.setCourtissueremarks(caseDetails.getCourtissueremarks());
+        caseDetails1.setOtherinvestigation(caseDetails.getOtherinvestigation());
+        caseDetails1.setDateofsendbacktofield(caseDetails.getDateofsendbacktofield());
         return caseDetailsRepository.save(caseDetails1);
     }
 

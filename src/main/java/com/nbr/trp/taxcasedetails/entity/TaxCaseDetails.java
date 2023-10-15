@@ -27,6 +27,9 @@ public class TaxCaseDetails {
     @Column(name = "tinno", columnDefinition="TEXT")
     public String tinno;
 
+    @Column(name = "fileno")
+    public String fileno;
+
     @Column(name = "nidno")
     public String nidno;
 
@@ -57,11 +60,17 @@ public class TaxCaseDetails {
     @Column(name = "dateofsendback")
     public Date dateofsendback;
 
+    @Column(name = "dateofsendbacktofield")
+    public Date dateofsendbacktofield;
+
     @Column(name = "fileenlisted")
     public Date fileenlisted;
 
     @Column(name = "courtissue")
     public String courtissue;
+
+    @Column(name = "courtissueremarks")
+    public String courtissueremarks;
 
     @Column(name = "comment")
     public String comment;
@@ -81,4 +90,6 @@ public class TaxCaseDetails {
     @Column(name = "status")
     public String status;
 
+    @Column(name = "otherinvestigation")
+    public String otherinvestigation;
 }
