@@ -79,4 +79,9 @@ public class CaseDetailsServiceImpl implements CaseDetailsService{
     public List<TaxCaseDetailsView> findBin(String bin) {
         return caseDetailsRepository.findByBin(bin);
     }
+
+    @Override
+    public List<TaxCaseDetailsView> findIO(String io) {
+        return caseDetailsRepository.findByIoContaining(io);
+    }
 }

@@ -50,4 +50,14 @@ public class CaseDetailsSearchController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/io/{io}")
+    public ResponseEntity<?> getByIO(@PathVariable String io) {
+        try{
+            List<TaxCaseDetailsView> taxFileTrk1 = caseDetailsService.findIO(io);
+            return ResponseEntity.ok(taxFileTrk1);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
 }

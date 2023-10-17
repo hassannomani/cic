@@ -26,4 +26,6 @@ public interface CaseDetailsService {
     public List<TaxCaseDetailsView> findTin(String tin);
 
     public List<TaxCaseDetailsView> findBin(String bin);
+
+    public List<TaxCaseDetailsView> findIO(String io);
 }
