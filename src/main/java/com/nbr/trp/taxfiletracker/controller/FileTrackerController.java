@@ -5,8 +5,13 @@ import com.nbr.trp.taxfiletracker.entity.TaxFileTrkView;
 import com.nbr.trp.taxfiletracker.service.FileTrackerService;
 import com.nbr.trp.user.entity.User;
 import com.nbr.trp.user.response.MessageResponse;
+import com.nbr.trp.user.service.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,8 +61,17 @@ public class FileTrackerController {
     @GetMapping("/remove/{id}")
     public ResponseEntity<?> removeAFile(@PathVariable String id) {
         try{
-            Boolean bool = fileTrackerService.deleteFileTrk(id);
-            return ResponseEntity.ok(bool);
+            SecurityContext context = SecurityContextHolder.getContext();
+            Authentication authentication = context.getAuthentication();
+            UserDetailsImpl userDetails1 = (UserDetailsImpl) authentication.getPrincipal();
+            String des = userDetails1.getDesignation();
+            if(des.equals("Director General")||des.equals("Assistant Programmer")){
+                Boolean bool = fileTrackerService.deleteFileTrk(id);
+                return ResponseEntity.ok(bool);
+            }else{
+                return ResponseEntity.status(403).body("error");
+            }
+
         }catch(Exception e){
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }

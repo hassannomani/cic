@@ -1,5 +1,6 @@
 package com.nbr.trp.user.service;
 
+import com.nbr.trp.user.entity.ERole;
 import com.nbr.trp.user.entity.Role;
 import com.nbr.trp.user.entity.User;
 import com.nbr.trp.user.repository.RoleRepository;
@@ -10,8 +11,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -35,7 +38,13 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = new BCryptPasswordEncoder();
         String pass = this.passwordEncoder.encode(user.getPassword());
         user.setStatus("0");
+        Set<Role> roles = new HashSet<>();
+
+        Role repRole = roleRepository.findByName(String.valueOf(ERole.ROLE_USER))
+                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        roles.add(repRole);
         //System.out.println("The pass is "+pass);
+        user.setRoles(roles);
         user.setPassword(pass);
         User u = userRepository.save(user);
         return u;

@@ -96,31 +96,31 @@ public class AuthController {
         employee.setAddedBy("SYSTEM");
         employee.setAddedFromIP("127.0.0.1");
 
-        Set<String> strRoles = signUpRequest.getRoles();
+        //Set<String> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
-        if (strRoles == null) {
+        //if (strRoles == null) {
 
-            Role repRole = roleRepository.findByName(String.valueOf(ERole.ROLE_USER))
+        Role repRole = roleRepository.findByName(String.valueOf(ERole.ROLE_USER))
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(repRole);
 
-        } else {
-
-            strRoles.forEach(role -> {
-
-                if (role.equals("admin")) {
-                    Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN.name())
-                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                    roles.add(adminRole);
-                } else if (role.equals("user")){
-                    Role userRole = roleRepository.findByName(ERole.ROLE_USER.name())
-                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                    roles.add(userRole);
-                }
-
-            });
-        }
+//        } else {
+//
+//            strRoles.forEach(role -> {
+//
+//                if (role.equals("admin")) {
+//                    Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN.name())
+//                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//                    roles.add(adminRole);
+//                } else if (role.equals("user")){
+//                    Role userRole = roleRepository.findByName(ERole.ROLE_USER.name())
+//                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//                    roles.add(userRole);
+//                }
+//
+//            });
+//        }
 
         employee.setRoles(roles);
         userRepository.save(employee);
