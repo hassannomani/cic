@@ -28,4 +28,6 @@ public interface CaseDetailsService {
     public List<TaxCaseDetailsView> findBin(String bin);
 
     public List<TaxCaseDetailsView> findIO(String io);
+
+    public List<TaxCaseDetailsView> findStatus(String status);
 }

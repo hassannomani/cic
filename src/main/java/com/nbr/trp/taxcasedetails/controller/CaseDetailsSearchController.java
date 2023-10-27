@@ -60,4 +60,15 @@ public class CaseDetailsSearchController {
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/status/{status}")
+    public ResponseEntity<?> getByStatus(@PathVariable String status) {
+        try{
+            List<TaxCaseDetailsView> taxFileTrk1 = caseDetailsService.findStatus(status);
+            return ResponseEntity.ok(taxFileTrk1);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
 }

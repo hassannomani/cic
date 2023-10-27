@@ -4,7 +4,11 @@ import com.nbr.trp.taxcasedetails.entity.TaxCaseDetails;
 import com.nbr.trp.taxcasedetails.entity.TaxCaseDetailsView;
 import com.nbr.trp.taxcasedetails.repository.CaseDetailsRepository;
 import com.nbr.trp.taxfiletracker.entity.TaxFileTrkView;
+import com.nbr.trp.user.service.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +20,11 @@ public class CaseDetailsServiceImpl implements CaseDetailsService{
 
     @Override
     public TaxCaseDetails saveCaseDetails(TaxCaseDetails taxCaseDetails) {
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
+        UserDetailsImpl userDetails1 = (UserDetailsImpl) authentication.getPrincipal();
+        String uuid = userDetails1.getUuid();
+        taxCaseDetails.setCreatedby(uuid);
         return caseDetailsRepository.save(taxCaseDetails);
     }
 
@@ -51,6 +60,7 @@ public class CaseDetailsServiceImpl implements CaseDetailsService{
         caseDetails1.setCourtissueremarks(caseDetails.getCourtissueremarks());
         caseDetails1.setOtherinvestigation(caseDetails.getOtherinvestigation());
         caseDetails1.setDateofsendbacktofield(caseDetails.getDateofsendbacktofield());
+        caseDetails1.setStatus(caseDetails.getStatus());
         return caseDetailsRepository.save(caseDetails1);
     }
 
@@ -84,4 +94,9 @@ public class CaseDetailsServiceImpl implements CaseDetailsService{
     public List<TaxCaseDetailsView> findIO(String io) {
         return caseDetailsRepository.findByIoContaining(io);
     }
+
+    public List<TaxCaseDetailsView> findStatus(String status){
+        return caseDetailsRepository.findByStatus(status);
+    }
+
 }

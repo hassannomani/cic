@@ -17,13 +17,16 @@ public class TaxFileTrk {
     @Column(columnDefinition = "uniqueidentifier default newid()")
     private String taxfileuuid;
 
-    @Column(name = "taxpayername", nullable = false)
+    @Column(name = "createdby")
+    public String createdby;
+
+    @Column(name = "taxpayername")
     public String taxpayername;
 
     @Column(name = "classification")
     public String classification;
 
-    @Column(name = "fileno",nullable = false)
+    @Column(name = "fileno")
     public String fileno;
 
     @Column(name = "tin")

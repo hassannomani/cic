@@ -3,7 +3,11 @@ package com.nbr.trp.taxfiletracker.service;
 import com.nbr.trp.taxfiletracker.entity.TaxFileTrk;
 import com.nbr.trp.taxfiletracker.entity.TaxFileTrkView;
 import com.nbr.trp.taxfiletracker.repository.FileTrackerRepository;
+import com.nbr.trp.user.service.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +20,11 @@ public class FileTrackerServiceImpl implements FileTrackerService{
 
     @Override
     public TaxFileTrk saveFileTrk(TaxFileTrk taxFileTrk) {
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
+        UserDetailsImpl userDetails1 = (UserDetailsImpl) authentication.getPrincipal();
+        String uuid = userDetails1.getUuid();
+        taxFileTrk.setCreatedby(uuid);
         return fileTrackerRepository.save(taxFileTrk);
     }
 

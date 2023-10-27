@@ -35,4 +35,7 @@ public interface CaseDetailsRepository extends JpaRepository<TaxCaseDetails, Str
     List<TaxCaseDetailsView> findByBin(String bin);
 
     List<TaxCaseDetailsView> findByIoContaining(String io);
+
+    List<TaxCaseDetailsView> findByStatus(String status);
+
 }

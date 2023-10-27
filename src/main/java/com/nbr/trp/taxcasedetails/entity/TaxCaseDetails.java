@@ -21,7 +21,7 @@ public class TaxCaseDetails {
     @Column(name = "createdby")
     public String createdby;
 
-    @Column(name = "taxpayername", nullable = false)
+    @Column(name = "taxpayername")
     public String taxpayername;
 
     @Column(name = "tinno", columnDefinition="TEXT")
