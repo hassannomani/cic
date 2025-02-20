@@ -31,19 +31,22 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http)
             throws Exception {
 
-        http.cors().and().csrf().disable().exceptionHandling()
-                .authenticationEntryPoint(unauthorizedHandler).and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeHttpRequests()
-                //.authorizeRequests()
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/test/**").permitAll()
-                .requestMatchers("/api/users/add").permitAll()
-                .requestMatchers("/api/common/file/**").permitAll()
-                .anyRequest()
-                .authenticated();
+//        http.cors().and().csrf().disable().exceptionHandling()
+//                .authenticationEntryPoint(unauthorizedHandler).and()
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .authorizeHttpRequests()
+//                //.authorizeRequests()
+////                .requestMatchers("/api/auth/**").permitAll()
+////                .requestMatchers("/api/test/**").permitAll()
+////                .requestMatchers("/api/users/add").permitAll()
+////                .requestMatchers("/api/common/file/**").permitAll()
+//                .anyRequest()
+//                .authenticated();
+
+        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
+
 
         http.addFilterBefore(authenticationJwtTokenFilter(),
                 UsernamePasswordAuthenticationFilter.class);

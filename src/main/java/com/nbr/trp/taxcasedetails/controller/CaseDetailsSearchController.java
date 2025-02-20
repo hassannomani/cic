@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 4800)
 @RestController
 @RequestMapping("/api/case-details-search")
 public class CaseDetailsSearchController {
@@ -17,7 +18,6 @@ public class CaseDetailsSearchController {
     @Autowired
     CaseDetailsService caseDetailsService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/name/{name}")
     public ResponseEntity<?> getByName(@PathVariable String name) {
         try{
@@ -28,7 +28,6 @@ public class CaseDetailsSearchController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/bin/{bin}")
     public ResponseEntity<?> getByBin(@PathVariable String bin) {
         try{
@@ -39,7 +38,6 @@ public class CaseDetailsSearchController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/tin/{tin}")
     public ResponseEntity<?> getByTin(@PathVariable String tin) {
         try{
@@ -50,7 +48,6 @@ public class CaseDetailsSearchController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/io/{io}")
     public ResponseEntity<?> getByIO(@PathVariable String io) {
         try{
@@ -61,7 +58,6 @@ public class CaseDetailsSearchController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/status/{status}")
     public ResponseEntity<?> getByStatus(@PathVariable String status) {
         try{

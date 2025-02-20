@@ -25,7 +25,6 @@ public class FileController {
     public FileUploadService fileUploadService;
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/photo")
     public ResponseEntity<FileResponse> photopost(@RequestPart("file") MultipartFile file) {
 
@@ -43,7 +42,6 @@ public class FileController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value="/photo/{filename}",produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<Resource> loadPhoto(@PathVariable String filename) {
         try {

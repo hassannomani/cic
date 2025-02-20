@@ -14,7 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*", maxAge = 4800)
 @RestController
 @RequestMapping("/api/inventory")
 public class InventoryController {
@@ -22,7 +22,6 @@ public class InventoryController {
     @Autowired
     InventoryService inventoryService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addInventory(@RequestBody Inventory inventory) {
@@ -34,7 +33,6 @@ public class InventoryController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/list")
     public ResponseEntity<?> listInventory() {
         try{
@@ -45,7 +43,6 @@ public class InventoryController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/remove/{id}")
     public ResponseEntity<?> listInventory(@PathVariable String id) {
         try{
@@ -65,7 +62,6 @@ public class InventoryController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/get/{id}")
     public ResponseEntity<?> getInventory(@PathVariable String id) {
         try{
@@ -76,7 +72,6 @@ public class InventoryController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/update")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> updateInventory(@RequestBody Inventory inventory) {

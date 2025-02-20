@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 4800)
 @RestController
 @RequestMapping("/api/jurisdiction")
 public class JurisdictionController {
@@ -18,7 +19,6 @@ public class JurisdictionController {
     @Autowired
     JurisdictionService jurisdictionService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addJurisdiction(@RequestBody Jurisdiction jurisdiction) {
@@ -30,7 +30,6 @@ public class JurisdictionController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/get")
     public ResponseEntity<?> getJurisiction() {
         try{
@@ -41,7 +40,6 @@ public class JurisdictionController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteJurs(@PathVariable String id) {

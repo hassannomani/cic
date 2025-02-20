@@ -127,7 +127,6 @@ public class AuthController {
 
         return ResponseEntity.ok(new MessageResponse("Employee registered successfully!"));
     }
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/logout")
     public ResponseEntity<?> logoutUser() {
         return new ResponseEntity<>(true, HttpStatus.OK);

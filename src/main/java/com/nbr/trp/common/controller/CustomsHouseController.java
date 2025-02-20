@@ -12,7 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*", maxAge = 4800)
 @RestController
 @RequestMapping("/api/house")
 public class CustomsHouseController {
@@ -20,7 +20,6 @@ public class CustomsHouseController {
     @Autowired
     CustomsHouseService customsHouseService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/addhouse")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addHouse(@RequestBody CustomsHouse customsHouse) {
@@ -32,7 +31,6 @@ public class CustomsHouseController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/gethouses")
     public ResponseEntity<?> getHouses() {
         try{
@@ -43,7 +41,6 @@ public class CustomsHouseController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/deletehouse/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deletehouse(@PathVariable String id) {

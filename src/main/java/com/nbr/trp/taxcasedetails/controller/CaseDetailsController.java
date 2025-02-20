@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 4800)
 @RestController
 @RequestMapping("/api/case-details")
 public class CaseDetailsController {
@@ -28,7 +29,6 @@ public class CaseDetailsController {
     private CaseDetailsRepository caseDetailsRepository;
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/add")
     public ResponseEntity<?> addCaseDetails(@RequestBody TaxCaseDetails caseDetails) {
         try{
@@ -39,7 +39,6 @@ public class CaseDetailsController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/list")
     public ResponseEntity<?> listCaseDetails() {
         try{
@@ -50,7 +49,6 @@ public class CaseDetailsController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/case/{id}")
     public ResponseEntity<?> getACase(@PathVariable String id) {
         try{
@@ -61,7 +59,6 @@ public class CaseDetailsController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/remove/{id}")
     public ResponseEntity<?> removeACaseDetails(@PathVariable String id) {
         try{
@@ -81,7 +78,6 @@ public class CaseDetailsController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/update")
     public ResponseEntity<?> updateCaseDetails(@RequestBody TaxCaseDetails caseDetails) {
         try{

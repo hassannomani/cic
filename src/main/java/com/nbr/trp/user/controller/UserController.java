@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-//@CrossOrigin(origins = "*", maxAge = 4800)
+@CrossOrigin(origins = "*", maxAge = 4800)
 @RestController
 @RequestMapping("/api/users")
 //@RequestMapping("/api/test")
@@ -28,7 +28,6 @@ public class UserController {
     RoleRepository roleRepository;
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/roles")
    // @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getAllRoles() {
@@ -40,7 +39,6 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/add")
     //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addUser(@RequestBody User user) {
@@ -54,7 +52,6 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getAllUsers() {
@@ -66,7 +63,6 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/user/{username}")
     public ResponseEntity<?> getAUser(@PathVariable String username) {
         System.out.println(username);
@@ -90,7 +86,6 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/assign/{email}/{designation}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> assignAndApprove(@PathVariable String email, @PathVariable String designation) {
@@ -103,7 +98,6 @@ public class UserController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/reject/{username}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> reject(@PathVariable String username) {

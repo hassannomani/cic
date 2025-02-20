@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 4800)
 @RestController
 @RequestMapping("/api/lcstation")
 public class LCStationController {
@@ -19,7 +20,6 @@ public class LCStationController {
     @Autowired
     LCStationService lcStationService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/addlcstation")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addLCStation(@RequestBody LCStation lcStation) {
@@ -31,7 +31,6 @@ public class LCStationController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getlcstations")
     public ResponseEntity<?> getLCStations() {
         try{
@@ -42,7 +41,6 @@ public class LCStationController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/deletelcstation/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deletelcstation(@PathVariable String id) {

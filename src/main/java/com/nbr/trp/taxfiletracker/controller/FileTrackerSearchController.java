@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 4800)
 @RestController
 @RequestMapping("/api/file-track-search")
 public class FileTrackerSearchController {
@@ -17,7 +18,6 @@ public class FileTrackerSearchController {
     @Autowired
     FileTrackerService fileTrackerService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/name/{name}")
     public ResponseEntity<?> getByName(@PathVariable String name) {
         try{
@@ -28,7 +28,6 @@ public class FileTrackerSearchController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/bin/{bin}")
     public ResponseEntity<?> getByBin(@PathVariable String bin) {
         try{
@@ -39,7 +38,6 @@ public class FileTrackerSearchController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/tin/{tin}")
     public ResponseEntity<?> getByTin(@PathVariable String tin) {
         try{
@@ -51,7 +49,6 @@ public class FileTrackerSearchController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/house/{house}")
     public ResponseEntity<?> getByHouse(@PathVariable String house) {
         try{
@@ -62,7 +59,6 @@ public class FileTrackerSearchController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/lc/{lc}")
     public ResponseEntity<?> getByLCStation(@PathVariable String lc) {
         try{
